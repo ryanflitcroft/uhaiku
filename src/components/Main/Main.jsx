@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Auth from '../Auth/Auth';
 import HaikuList from '../HaikuList/HaikuList';
 import HaikuDetail from '../HaikuDetail/HaikuDetail';
@@ -10,18 +11,18 @@ export default function Main() {
     <>
       <main>
         <Switch>
-          <Route path="/">
+          <PrivateRoute path="/">
             <HaikuList />
-          </Route>
+          </PrivateRoute>
           <Route path="/auth">
             <Auth />
           </Route>
-          <Route path="/haiku/:id">
+          <PrivateRoute path="/haiku/:id">
             <HaikuDetail />
-          </Route>
-          <Route path="/haiku/create">
+          </PrivateRoute>
+          <PrivateRoute path="/haiku/create">
             <CreateHaiku />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </main>
     </>
