@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: whitesmoke;
+  color: #3d3d3d;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  margin: 0 0 1em;
+}
+
+header p span {
+  display: block;
+  font-weight: bold;
+}
+
+header button {
+  all: unset;
+  cursor: pointer;
+}
+
+main { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  }
+
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0.25em 0.25em 0.5em #3d3d3d,
+              -0.05em -0.05em 0.15em #d3d3d3;
+  margin: 3em 0;
+}
+
+form div {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 0 0 0.5em;
+}
+
+form div span {
+  width: 100%;
+  padding: 0.5em;
+  cursor: initial;
+  background: white;
+}
+
+form div span.clickable {
+  background: rgb(231, 231, 231);
+  cursor: pointer;
+}
+
+form label {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+  align-self: center;
+}
+
+form input {
+  margin: 0.25em 0;
+  width: 200px;
+  align-self: center;
+}
+
+button {
+  width: 100px;
+  margin: 1.5em;
+  padding: 0.25em;
+  align-self: center;
+  cursor: pointer;
+}

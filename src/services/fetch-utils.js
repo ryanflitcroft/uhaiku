@@ -4,13 +4,13 @@ export function getUser() {
   return client.auth.session();
 }
 
-export async function signUpUser(email, password, username){
+export async function signUp(email, password, username){
   const response = await client.auth.signUp({ email, password });
   await createProfile(username, email);
   return response.user;
 }
 
-export async function signInUser(email, password) {
+export async function signIn(email, password) {
   const response = await client.auth.signIn({
     email,
     password
@@ -18,7 +18,7 @@ export async function signInUser(email, password) {
   return response.user;
 }
 
-export async function signOutUser() {
+export async function signOut() {
   await client.auth.signOut();
 }
 

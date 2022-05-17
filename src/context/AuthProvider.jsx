@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { getUser, signIn, signUp, signOut } from '../services/fetch-utils';
 
 export const authContext = createContext();
 
