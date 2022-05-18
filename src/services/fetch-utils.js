@@ -41,9 +41,10 @@ export async function createHaiku(haiku) {
 
 export async function uploadImage(image) {
   const user = getUser();
+  console.log('user', user);
   const response = await client.storage
     .from('uhaiku')
-    .upload(`${user.user.id}/${image.name}`, image, {
+    .upload(`${user.id}/${image.name}`, image, {
       cacheControl: '3600',
       upsert: false,
     });

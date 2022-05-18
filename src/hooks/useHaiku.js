@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { haikuContext } from '../context/HaikuProvider';
-import { getHaikus } from '../services/fetch-utils';
+import { getHaikus, createHaiku } from '../services/fetch-utils';
 
 export const useHaiku = () => {
   const context = useContext(haikuContext);

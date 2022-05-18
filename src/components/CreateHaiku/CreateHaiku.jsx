@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useHaiku } from '../../hooks/useHaiku';
 import { uploadImage } from '../../services/fetch-utils';
 
@@ -10,9 +11,10 @@ export default function CreateHaiku() {
   const [lineThree, setLineThree] = useState('');
   const [image, setImage] = useState({});
   const [alt, setAlt] = useState('');
+  const history = useHistory();
 
   const handleUpload = (e) => {
-    setImageUrl(e.target.files[0]);
+    setImage(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
@@ -26,6 +28,8 @@ export default function CreateHaiku() {
       image: `https://kyhyvkpvpfgdixqgujqe.supabase.co/storage/v1/object/public/uhaiku/${haikuImage.Key}`,
       alt,
     });
+
+    history.replace('/');
   };
 
   return (
@@ -40,7 +44,7 @@ export default function CreateHaiku() {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
-        <label htmlFor="lineOne">5 syllables:</label>
+        <label htmlFor="lineOne">Five syllables:</label>
         <input
           type="text"
           name="lineOne"
