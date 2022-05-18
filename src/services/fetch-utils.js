@@ -38,3 +38,15 @@ export async function createHaiku(haiku) {
 
   return checkError(response);
 }
+
+export async function uploadImage(image) {
+  const user = getUser();
+  const response = await client.storage
+    .from('uhaiku')
+    .upload(`${user.user.id}/${image.name}`, image, {
+      cacheControl: '3600',
+      upsert: false,
+    });
+
+  return checkError(response);
+}

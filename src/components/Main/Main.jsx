@@ -14,11 +14,11 @@ export default function Main() {
           <Route path="/auth">
             <Auth />
           </Route>
-          <PrivateRoute path="/haiku/:id">
-            <HaikuDetail />
-          </PrivateRoute>
-          <PrivateRoute path="/haiku/create">
+          <PrivateRoute exact path="/haiku/create">
             <CreateHaiku />
+          </PrivateRoute>
+          <PrivateRoute exact path="/haiku/:id">
+            <HaikuDetail />
           </PrivateRoute>
           <PrivateRoute exact path="/">
             <HaikuList />
