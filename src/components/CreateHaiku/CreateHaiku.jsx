@@ -25,7 +25,7 @@ export default function CreateHaiku() {
       line_one: lineOne,
       line_two: lineTwo,
       line_three: lineThree,
-      image: `https://kyhyvkpvpfgdixqgujqe.supabase.co/storage/v1/object/public/uhaiku/${haikuImage.Key}`,
+      image: `https://kyhyvkpvpfgdixqgujqe.supabase.co/storage/v1/object/public/${haikuImage.Key}`,
       alt,
     });
 
