@@ -3,9 +3,8 @@ import { getUser, signIn, signUp, signOut } from '../services/fetch-utils';
 
 export const authContext = createContext();
 
-export function AuthProvider({ children }) {
+export default function AuthProvider({ children }) {
   const currentUser = getUser();
-  console.log('currentUser', currentUser);
   const [user, setUser] = useState(currentUser || { email: null });
   const [newUser, setNewUser] = useState(false);
 

@@ -1,12 +1,11 @@
 import { client, checkError } from './client';
 
 export function getUser() {
-  return client.auth.session();
+  return client.auth.user();
 }
 
 export async function signUp(email, password, username) {
   const response = await client.auth.signUp({ email, password });
-  console.log('signup', email, password, username);
   await createProfile(email, username);
   return response.user;
 }

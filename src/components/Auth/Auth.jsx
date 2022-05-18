@@ -13,22 +13,22 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { origin } = location.state || { origin: { pathname: '/' } };
+  const { from } = location.state || { from: { pathname: '/' } };
 
   useEffect(() => {
+    console.log('auth', user);
     user.email && history.replace('/');
   }, []);
 
   const handleSubmit = async (e) => {
     try {
-      console.log('anything?');
       e.preventDefault();
       await authorizeUser(email, password, username);
       setEmail('');
       setPassword('');
       setUsername('');
 
-      history.replace(origin.pathname);
+      history.replace(from.pathname);
     } catch (error) {
       setError(error.message);
     }
