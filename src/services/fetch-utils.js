@@ -28,17 +28,13 @@ async function createProfile(email, username) {
 }
 
 export async function getHaikus() {
-  const response = await client
-    .from('haikus')
-    .select()
+  const response = await client.from('haikus').select();
 
   return checkError(response);
 }
 
 export async function createHaiku(haiku) {
-  const response = await client
-    .from('haikus')
-    .insert(haiku);
+  const response = await client.from('haikus').insert(haiku).single();
 
   return checkError(response);
 }
