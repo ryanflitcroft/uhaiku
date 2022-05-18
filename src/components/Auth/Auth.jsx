@@ -8,6 +8,7 @@ export default function Auth() {
   const location = useLocation();
   const history = useHistory();
 
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -20,10 +21,12 @@ export default function Auth() {
 
   const handleSubmit = async (e) => {
     try {
+      console.log('anything?');
       e.preventDefault();
-      await authorizeUser(email, password);
+      await authorizeUser(email, password, username);
       setEmail('');
       setPassword('');
+      setUsername('');
 
       history.replace(origin.pathname);
     } catch (error) {
@@ -54,6 +57,20 @@ export default function Auth() {
             Sign Up
           </span>
         </div>
+        {newUser && (
+          <>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="username"
+              minLength="3"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </>
+        )}
         <label htmlFor="email">Email</label>
         <input
           type="email"

@@ -4,15 +4,16 @@ import { useAuth } from '../../hooks/useAuth';
 
 export default function PrivateRoute({ children, ...rest }) {
   let { user } = useAuth();
+  console.log('user', user);
 
   return (
-    <Route 
+    <Route
       {...rest}
       render={({ location }) =>
         user.email ? (
           children
         ) : (
-          <Redirect 
+          <Redirect
             to={{
               pathname: '/auth',
               state: { origin: location },

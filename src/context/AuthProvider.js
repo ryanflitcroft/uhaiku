@@ -5,10 +5,11 @@ export const authContext = createContext();
 
 export function AuthProvider({ children }) {
   const currentUser = getUser();
+  console.log('currentUser', currentUser);
   const [user, setUser] = useState(currentUser || { email: null });
   const [newUser, setNewUser] = useState(false);
 
-  const authorizeUser = async (email, password) => {
+  const authorizeUser = async (email, password, username) => {
     if (!newUser) {
       const authenticatedUser = await signIn(email, password);
       setUser(authenticatedUser);
@@ -17,7 +18,7 @@ export function AuthProvider({ children }) {
       setUser(authenticatedUser);
     }
   };
-  
+
   const signOutUser = async () => {
     await signOut();
   };
@@ -28,12 +29,10 @@ export function AuthProvider({ children }) {
     newUser,
     setNewUser,
     authorizeUser,
-    signOutUser
+    signOutUser,
   };
 
   return (
-    <authContext.Provider value={authState}>
-      {children}
-    </authContext.Provider>
+    <authContext.Provider value={authState}>{children}</authContext.Provider>
   );
 }
