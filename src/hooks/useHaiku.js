@@ -1,6 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { haikuContext } from '../context/HaikuProvider';
-import { getHaikus, createHaiku, updateHaikuById } from '../services/fetch-utils';
+import {
+  getHaikus,
+  createHaiku,
+  updateHaikuById,
+} from '../services/fetch-utils';
 
 export const useHaiku = () => {
   const context = useContext(haikuContext);
@@ -32,7 +36,13 @@ export const useHaiku = () => {
   }
 
   async function updateHaiku(id, { title, line_one, line_two, line_three }) {
-    const haiku = await updateHaikuById(id, { title, line_one, line_two, line_three });
+    const haiku = await updateHaikuById(id, {
+      title,
+      line_one,
+      line_two,
+      line_three,
+    });
+    console.log('HAIKU!!', haiku);
     dispatch({ type: 'UPDATE_HAIKU', payload: haiku });
   }
 

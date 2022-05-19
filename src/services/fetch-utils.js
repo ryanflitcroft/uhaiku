@@ -34,7 +34,11 @@ export async function getHaikus() {
 }
 
 export async function getHaikuById(id) {
-  const response = await client.from('haikus').select(`*, profiles!inner(username)`).match({ id }).single();
+  const response = await client
+    .from('haikus')
+    .select(`*, profiles!inner(username)`)
+    .match({ id })
+    .single();
 
   return checkError(response);
 }
@@ -57,11 +61,15 @@ export async function uploadImage(image) {
   return checkError(response);
 }
 
-export async function updateHaikuById(id, { title, line_one, line_two, line_three }) {
+export async function updateHaikuById(
+  id,
+  { title, line_one, line_two, line_three }
+) {
   const response = await client
     .from('haikus')
     .update({ title, line_one, line_two, line_three })
-    .match({ id });
+    .match({ id })
+    .single();
 
   return checkError(response);
 }

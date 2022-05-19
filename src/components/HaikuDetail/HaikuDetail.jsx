@@ -38,53 +38,54 @@ export default function HaikuDetail() {
 
   async function handleUpdate(e) {
     e.preventDefault();
-    const update = await updateHaiku( haiku.id, { 
+    await updateHaiku(haiku.id, {
       title: title,
       line_one: lineOne,
       line_two: lineTwo,
-      line_three: lineThree
+      line_three: lineThree,
     });
-    
-    // setHaiku(update);
+
     setIsEditing(false);
+    const updated = await getHaikuById(haiku.id);
+    setHaiku(updated);
   }
 
   let content;
-  
+
   if (!isEditing) {
     content = (
-    <section>
-      <figure>
-        <h2>{haiku.title}</h2>
-        <p>By: {haiku.profiles?.username}</p>
-        <img src={haiku.image} alt={haiku.alt}/>
-        <figcaption>
-          <span>{haiku.line_one}</span>
-          <span>{haiku.line_two}</span>
-          <span>{haiku.line_three}</span>
-        </figcaption>
-      </figure>
-      <button onClick={() => setIsEditing(true)}>{action}</button>
-      <button>Delete</button>
-    </section>
-    )} else {
-      content = (
       <section>
-      <form
-        onSubmit={handleUpdate}
-      >
-        <label htmlFor="title">Give your Haiku a title:</label>
-        <input 
-          type="text"
-          name="title"
-          placeholder={haiku.title}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required/>
-        <p>By: {haiku.profiles?.username}</p>
-        <img src={haiku.image} alt={haiku.alt}/>
-        <label htmlFor="lineOne">Five syllables:</label>
-        <input
+        <figure>
+          <h2>{haiku.title}</h2>
+          <p>By: {haiku.profiles?.username}</p>
+          <img src={haiku.image} alt={haiku.alt} />
+          <figcaption>
+            <span>{haiku.line_one}</span>
+            <span>{haiku.line_two}</span>
+            <span>{haiku.line_three}</span>
+          </figcaption>
+        </figure>
+        <button onClick={() => setIsEditing(true)}>{action}</button>
+        <button>Delete</button>
+      </section>
+    );
+  } else {
+    content = (
+      <section>
+        <form onSubmit={handleUpdate}>
+          <label htmlFor="title">Give your Haiku a title:</label>
+          <input
+            type="text"
+            name="title"
+            placeholder={haiku.title}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <p>By: {haiku.profiles?.username}</p>
+          <img src={haiku.image} alt={haiku.alt} />
+          <label htmlFor="lineOne">Five syllables:</label>
+          <input
             type="text"
             name="lineOne"
             placeholder={haiku.line_one}
@@ -110,11 +111,10 @@ export default function HaikuDetail() {
             onChange={(e) => setLineThree(e.target.value)}
             required
           />
-      <button>Save</button>
-      </form>
-    </section>
-    )}
-    return content;
+          <button>Save</button>
+        </form>
+      </section>
+    );
   }
-
-
+  return content;
+}
