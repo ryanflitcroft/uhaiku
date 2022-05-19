@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { getHaikuById } from '../../services/fetch-utils';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function HaikuDetail() {
   const [haiku, setHaiku] = useState({});
   const { id } = useParams();
+  const { user } = useAuth();
+  const action = user.id === haiku.user_id ? 'edit' : 'copy';
 
   useEffect(() => {
     async function getHaiku() {
@@ -27,6 +30,10 @@ export default function HaikuDetail() {
           <span>{haiku.line_three}</span>
         </figcaption>
       </figure>
+      <Link to={`/haiku/${id}/${action}`}>
+      <button>{action}</button>
+      </Link>
+      <button>Delete</button>
     </section>
   );
 }
