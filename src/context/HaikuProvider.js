@@ -1,5 +1,4 @@
 import { createContext, useReducer } from 'react';
-import { createHaiku, getHaikus } from '../services/fetch-utils';
 
 export const haikuContext = createContext();
 
@@ -10,6 +9,8 @@ const haikuReducer = (state, { type, payload }) => {
       return [payload, ...state];
     case 'RESET':
       return payload;
+    case 'UPDATE_HAIKU':
+      return state.map((haiku) => (haiku.id === payload.id ? payload : haiku));
   }
 };
 

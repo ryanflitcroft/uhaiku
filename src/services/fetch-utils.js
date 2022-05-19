@@ -56,3 +56,12 @@ export async function uploadImage(image) {
 
   return checkError(response);
 }
+
+export async function updateHaikuById(id, { title, line_one, line_two, line_three }) {
+  const response = await client
+    .from('haikus')
+    .update({ title, line_one, line_two, line_three })
+    .match({ id });
+
+  return checkError(response);
+}
