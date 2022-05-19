@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getHaikuById } from '../../services/fetch-utils';
 import { useAuth } from '../../hooks/useAuth';
 import { useHaiku } from '../../hooks/useHaiku';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function HaikuDetail() {
   const [haiku, setHaiku] = useState({});
@@ -13,7 +14,8 @@ export default function HaikuDetail() {
   const [isEditing, setIsEditing] = useState(false);
   const { id } = useParams();
   const { user } = useAuth();
-  const { updateHaiku } = useHaiku();
+  const { updateHaiku, deleteHaiku } = useHaiku();
+  const history = useHistory();
   const action = user.id === haiku.user_id ? 'edit' : 'copy';
 
   useEffect(() => {
@@ -21,7 +23,6 @@ export default function HaikuDetail() {
       const data = await getHaikuById(id);
       setHaiku(data);
     }
-
     getHaiku();
   }, []);
 
@@ -44,10 +45,14 @@ export default function HaikuDetail() {
       line_two: lineTwo,
       line_three: lineThree,
     });
-
     setIsEditing(false);
     const updated = await getHaikuById(haiku.id);
     setHaiku(updated);
+  }
+
+  async function handleDelete() {
+    await deleteHaiku(id);
+    history.replace('/');
   }
 
   let content;
@@ -66,7 +71,6 @@ export default function HaikuDetail() {
           </figcaption>
         </figure>
         <button onClick={() => setIsEditing(true)}>{action}</button>
-        <button>Delete</button>
       </section>
     );
   } else {
@@ -111,7 +115,10 @@ export default function HaikuDetail() {
             onChange={(e) => setLineThree(e.target.value)}
             required
           />
-          <button>Save</button>
+          <button type="submit">Save</button>
+          <button type="button" onClick={handleDelete}>
+            Delete
+          </button>
         </form>
       </section>
     );

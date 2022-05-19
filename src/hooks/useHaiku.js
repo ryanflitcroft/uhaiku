@@ -4,6 +4,7 @@ import {
   getHaikus,
   createHaiku,
   updateHaikuById,
+  deleteHaikuById,
 } from '../services/fetch-utils';
 
 export const useHaiku = () => {
@@ -42,9 +43,14 @@ export const useHaiku = () => {
       line_two,
       line_three,
     });
-    console.log('HAIKU!!', haiku);
+
     dispatch({ type: 'UPDATE_HAIKU', payload: haiku });
   }
 
-  return { haikuList, addHaiku, updateHaiku };
+  async function deleteHaiku(id) {
+    const payload = await deleteHaikuById(id);
+    dispatch({ type: 'DELETE_HAIKU', payload });
+  }
+
+  return { haikuList, addHaiku, updateHaiku, deleteHaiku };
 };
