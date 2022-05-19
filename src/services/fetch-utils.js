@@ -33,6 +33,12 @@ export async function getHaikus() {
   return checkError(response);
 }
 
+export async function getHaikuById(id) {
+  const response = await client.from('haikus').select().match({ id }).single();
+
+  return checkError(response);
+}
+
 export async function createHaiku(haiku) {
   const response = await client.from('haikus').insert(haiku).single();
 
