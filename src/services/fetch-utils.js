@@ -34,7 +34,7 @@ export async function getHaikus() {
 }
 
 export async function getHaikuById(id) {
-  const response = await client.from('haikus').select().match({ id }).single();
+  const response = await client.from('haikus').select(`*, profiles!inner(username)`).match({ id }).single();
 
   return checkError(response);
 }
