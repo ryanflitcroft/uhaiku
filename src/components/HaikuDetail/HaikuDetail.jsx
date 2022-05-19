@@ -14,9 +14,10 @@ export default function HaikuDetail() {
   const [isEditing, setIsEditing] = useState(false);
   const { id } = useParams();
   const { user } = useAuth();
-  const { updateHaiku, deleteHaiku } = useHaiku();
+  const { addHaiku, updateHaiku, deleteHaiku } = useHaiku();
   const history = useHistory();
-  const action = user.id === haiku.user_id ? 'edit' : 'copy';
+  const isOwner = user.id === haiku.user_id;
+  const action = isOwner ? 'edit' : 'copy';
 
   useEffect(() => {
     async function getHaiku() {
@@ -39,15 +40,31 @@ export default function HaikuDetail() {
 
   async function handleUpdate(e) {
     e.preventDefault();
-    await updateHaiku(haiku.id, {
-      title: title,
-      line_one: lineOne,
-      line_two: lineTwo,
-      line_three: lineThree,
-    });
-    setIsEditing(false);
-    const updated = await getHaikuById(haiku.id);
-    setHaiku(updated);
+
+    // if OWNER then update OG haiku
+    if (isOwner) {
+      await updateHaiku(haiku.id, {
+        title: title,
+        line_one: lineOne,
+        line_two: lineTwo,
+        line_three: lineThree,
+      });
+      setIsEditing(false);
+      const updated = await getHaikuById(haiku.id);
+      setHaiku(updated);
+    } else {
+      // if NOT OWNER then add new Haiku with updated info
+      await addHaiku({
+        user_id: user.id,
+        image: haiku.image,
+        alt: haiku.alt,
+        title,
+        line_one: lineOne,
+        line_two: lineTwo,
+        line_three: lineThree,
+      });
+      history.replace('/');
+    }
   }
 
   async function handleDelete() {
@@ -116,9 +133,11 @@ export default function HaikuDetail() {
             required
           />
           <button type="submit">Save</button>
-          <button type="button" onClick={handleDelete}>
-            Delete
-          </button>
+          {isOwner && (
+            <button type="button" onClick={handleDelete}>
+              Delete
+            </button>
+          )}
         </form>
       </section>
     );

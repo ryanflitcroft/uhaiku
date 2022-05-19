@@ -28,7 +28,9 @@ async function createProfile(email, username) {
 }
 
 export async function getHaikus() {
-  const response = await client.from('haikus').select();
+  const response = await client
+    .from('haikus')
+    .select(`*, profiles!inner(username)`);
 
   return checkError(response);
 }
