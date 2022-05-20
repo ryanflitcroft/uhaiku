@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { authContext } from '../context/AuthProvider';
+import { signOut } from '../services/fetch-utils';
 
 export const useAuth = () => {
   const context = useContext(authContext);
@@ -7,5 +8,25 @@ export const useAuth = () => {
     throw new Error('useAuth must be user within UserProvider');
   }
 
-  return context;
+  const { 
+    user,
+    setUser,
+    newUser,
+    setNewUser,
+    authorizeUser,
+  } = context;
+
+
+  const signOutUser = async () => {
+    await signOut();
+  };
+
+  return { 
+    signOutUser, 
+    user,
+    setUser,
+    newUser,
+    setNewUser,
+    authorizeUser, 
+  };
 };

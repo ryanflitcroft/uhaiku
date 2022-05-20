@@ -1,8 +1,17 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useHistory } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 export default function Navigation() {
+  const history = useHistory();
   const { pathname } = useLocation();
+  const { signOutUser } = useAuth();
+
+  async function handleLogout() {
+    await signOutUser();
+    
+    history.replace('/auth');
+  }
 
   return (
     <nav>
@@ -24,7 +33,7 @@ export default function Navigation() {
           </li>
         }
           <li>
-            <button>Logout</button>
+            <button onClick={handleLogout}>Logout</button>
           </li>
       </ul>
     </nav>

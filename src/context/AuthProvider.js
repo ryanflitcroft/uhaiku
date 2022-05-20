@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { getUser, signIn, signUp, signOut } from '../services/fetch-utils';
+import { getUser, signIn, signUp } from '../services/fetch-utils';
 
 export const authContext = createContext();
 
@@ -18,9 +18,6 @@ export default function AuthProvider({ children }) {
     }
   };
 
-  const signOutUser = async () => {
-    await signOut();
-  };
 
   const authState = {
     user,
@@ -28,7 +25,6 @@ export default function AuthProvider({ children }) {
     newUser,
     setNewUser,
     authorizeUser,
-    signOutUser,
   };
 
   return (
