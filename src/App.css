@@ -12,11 +12,17 @@ body,
   font-family: 'sunflower', sans-serif;
   font-weight: 400;
   font-style: normal;
+  background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+    font-size: 19px;
+  letter-spacing: 1px;
+  word-spacing: 5px;
 }
 
 header {
   position: sticky;
   top: 0;
+  justify-content: center;
+  align-items: center;
   background: whitesmoke;
   color: #3d3d3d;
   padding: 1em;
@@ -37,19 +43,25 @@ header button {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+  color: #1a95c5;
+}
+
 main { 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  }
+}
 
 form {
   width: 300px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0.25em 0.25em 0.5em #3d3d3d,
-              -0.05em -0.05em 0.15em #d3d3d3;
+  background: ghostwhite;
+  border: #3d3d3d solid 2px;
+  box-shadow: 2px 2px 1px #094c66aa;
   margin: 3em 0;
 }
 
@@ -64,10 +76,12 @@ form div span {
   width: 100%;
   padding: 0.5em;
   cursor: initial;
-  background: white;
+  background: ghostwhite;
+  color: #d3d3d3;
 }
 
 form div span.clickable {
+  color: #3d3d3d;
   background: rgb(231, 231, 231);
   cursor: pointer;
 }
@@ -85,31 +99,27 @@ form input {
   width: 200px;
   align-self: center;
   text-align: center;
+  font-family: 'sunflower', sans-serif;
 }
 
 button {
   all: unset;
   width: 100px;
-  margin: 1.5em;
   padding: 0.25em;
   align-self: center;
   color: #3d3d3d;
   cursor: pointer;
   border: #3d3d3d solid 2px;
-  box-shadow: 1px 1px #5ee7dfaa;
+  background: #239ac9;
+  box-shadow: 2px 2px 1px #094c66aa;
   transition: transform 200ms, box-shadow 200ms;
   text-align: center;
+  margin: 1em 0;
 }
 
 button:active {
-  transform: translateX(1px) translateY(1px);
-  box-shadow: #5ee7dfaa 0px 0px 0px;
-}
-
-img {
-  width: 300px;
-  height: 300px;
-  object-fit: cover;
+  transform: translateX(2px) translateY(2px);
+  box-shadow: #094c66aa 0px 0px 0px;
 }
 
 ul {
@@ -118,4 +128,8 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+li button {
+    color: #1a95c5;
 }

@@ -71,7 +71,6 @@ export default function HaikuUpdate({
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-          <p>By: {haiku.profiles?.username}</p>
           <img src={haiku.image} alt={haiku.alt} />
           <label htmlFor="lineOne">Five syllables:</label>
           <input

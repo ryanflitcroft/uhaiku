@@ -2,6 +2,13 @@ figure {
   position: relative;
 }
 
+img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  padding: 1em;
+}
+
 .item figcaption {
   width: 100%;
   position: absolute;

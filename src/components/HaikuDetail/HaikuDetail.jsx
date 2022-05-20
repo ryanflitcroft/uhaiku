@@ -28,7 +28,7 @@ export default function HaikuDetail() {
       <section className={style.detail}>
         <figure>
           <h2>{haiku.title}</h2>
-          <p>By: {haiku.profiles?.username}</p>
+          <p>by {haiku.profiles?.username}</p>
           <img src={haiku.image} alt={haiku.alt} />
           <figcaption>
             <span>{haiku.line_one}</span>

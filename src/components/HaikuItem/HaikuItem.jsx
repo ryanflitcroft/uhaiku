@@ -9,9 +9,7 @@ export default function HaikuItem({ haiku }) {
         <Link to={`/haiku/${haiku.id}`}>
           <img src={`${haiku.image}`} alt={`${haiku.alt}`} />
         </Link>
-        <figcaption>
-          {haiku.title} by <span>{haiku.profiles?.username}</span>
-        </figcaption>
+        <figcaption>{haiku.title}</figcaption>
       </figure>
     </>
   );
