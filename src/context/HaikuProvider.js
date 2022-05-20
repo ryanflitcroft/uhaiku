@@ -2,7 +2,6 @@ import { createContext, useReducer } from 'react';
 
 export const haikuContext = createContext();
 
-// haiku: {id: 1, title: 'seashore', content: 'this is the best haiku', image: 'image.url.com'}
 const haikuReducer = (state, { type, payload }) => {
   switch (type) {
     case 'ADD_HAIKU':

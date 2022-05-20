@@ -5,8 +5,6 @@ import Auth from '../Auth/Auth';
 import HaikuList from '../HaikuList/HaikuList';
 import HaikuDetail from '../HaikuDetail/HaikuDetail';
 import CreateHaiku from '../CreateHaiku/CreateHaiku';
-import HaikuEdit from '../HaikuEdit/HaikuEdit';
-import HaikuCopy from '../HaikuCopy/HaikuCopy';
 
 export default function Main() {
   return (
@@ -21,12 +19,6 @@ export default function Main() {
           </PrivateRoute>
           <PrivateRoute exact path="/haiku/:id">
             <HaikuDetail />
-          </PrivateRoute>
-          <PrivateRoute exact path="/haiku/:id/edit">
-            <HaikuEdit />
-          </PrivateRoute>
-          <PrivateRoute exact path="/haiku/:id/copy">
-            <HaikuCopy />
           </PrivateRoute>
           <PrivateRoute exact path="/">
             <HaikuList />
