@@ -1,4 +1,10 @@
-import { render, screen, waitFor, within } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  within,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { rest } from 'msw';
 import { server } from './setupTests';
@@ -55,6 +61,15 @@ describe('renders component App', () => {
       const haikuItems = screen.getAllByRole('listitem');
 
       expect(haikuList.childElementCount).toBe(mockHaikuList.length);
+
+      userEvent.click(createLink);
+      waitForElementToBeRemoved(createLink);
+
+      const homeButton = screen.getByRole('link', {
+        name: /home/i,
+      });
     });
+
+    screen.debug();
   });
 });

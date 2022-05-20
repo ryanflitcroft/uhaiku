@@ -10,7 +10,6 @@ img {
 }
 
 .item figcaption {
-  width: 100%;
   position: absolute;
   bottom: 0;
   background-color: rgba(248, 248, 255, 0.85);
