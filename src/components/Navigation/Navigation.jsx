@@ -5,12 +5,12 @@ import { useAuth } from '../../hooks/useAuth';
 export default function Navigation() {
   const history = useHistory();
   const { pathname } = useLocation();
-  const { signOutUser } = useAuth();
+  const { signOutUser, setUser } = useAuth();
 
   async function handleLogout() {
     await signOutUser();
-    
-    history.replace('/auth');
+    setUser({ email: null });
+    history.replace('/');
   }
 
   return (

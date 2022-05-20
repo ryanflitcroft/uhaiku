@@ -16,7 +16,6 @@ export default function Auth() {
   const { from } = location.state || { from: { pathname: '/' } };
 
   useEffect(() => {
-    console.log('auth', user);
     user.email && history.replace('/');
   }, []);
 
