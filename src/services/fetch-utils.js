@@ -4,6 +4,16 @@ export function getUser() {
   return client.auth.user();
 }
 
+export async function getProfileById(userId) {
+  const response = await client
+    .from('profiles')
+    .select()
+    .match({ user_id: userId })
+    .single();
+
+  return checkError(response);
+}
+
 export async function signUp(email, password, username) {
   const response = await client.auth.signUp({ email, password });
   await createProfile(email, username);

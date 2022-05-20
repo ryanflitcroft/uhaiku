@@ -7,6 +7,7 @@ export default function AuthProvider({ children }) {
   const currentUser = getUser();
   const [user, setUser] = useState(currentUser || { email: null });
   const [newUser, setNewUser] = useState(false);
+  const [profile, setProfile] = useState(null);
 
   const authorizeUser = async (email, password, username) => {
     if (!newUser) {
@@ -25,6 +26,8 @@ export default function AuthProvider({ children }) {
     newUser,
     setNewUser,
     authorizeUser,
+    profile,
+    setProfile
   };
 
   return (
