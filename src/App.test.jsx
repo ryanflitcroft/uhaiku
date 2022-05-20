@@ -41,7 +41,16 @@ describe('renders component App', () => {
 
     await waitFor(() => {
       const banner = screen.getByRole('banner');
-      within(banner).getByText(/ryan/i);
+      const headerText = screen.getByRole('heading', {
+        name: /uhaiku/i,
+      });
+      const username = within(banner).getByText(/ryan/i);
+      const createLink = screen.getByRole('link', {
+        name: /create/i,
+      });
+      const logoutButton = screen.getByRole('button', {
+        name: /logout/i,
+      });
     });
   });
 });
