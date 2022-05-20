@@ -6,8 +6,7 @@ import { MemoryRouter } from 'react-router-dom';
 import AuthProvider from './context/AuthProvider';
 import HaikuProvider from './context/HaikuProvider';
 import App from './App';
-import { signIn } from './services/fetch-utils';
-import { mockProfile } from './mockData/mockData';
+import { mockProfile, mockHaikuList } from './mockData/mockData';
 
 describe('renders component App', () => {
   it('should sign a user in', async () => {
@@ -51,6 +50,11 @@ describe('renders component App', () => {
       const logoutButton = screen.getByRole('button', {
         name: /logout/i,
       });
+
+      const haikuList = screen.getByRole('list');
+      const haikuItems = screen.getAllByRole('listitem');
+
+      expect(haikuList.childElementCount).toBe(mockHaikuList.length);
     });
   });
 });

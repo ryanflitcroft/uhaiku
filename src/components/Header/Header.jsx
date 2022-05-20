@@ -10,19 +10,17 @@ export default function Header() {
   useEffect(() => {
     user.email && getProfile(user?.id);
   }, [user]);
-  
-  console.log(user);
+
   return (
     <>
       <header>
         <h1>uhaiku</h1>
-        {(pathname !== '/auth')
-          &&
+        {pathname !== '/auth' && (
           <>
             <p>{profile}</p>
             <Navigation />
           </>
-        }
+        )}
       </header>
     </>
   );
