@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getHaikuById } from '../../services/fetch-utils';
 import { useAuth } from '../../hooks/useAuth';
 import { useHaiku } from '../../hooks/useHaiku';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
+import style from './HaikuDetail.css';
 
 export default function HaikuDetail() {
   const [haiku, setHaiku] = useState({});
@@ -76,7 +77,7 @@ export default function HaikuDetail() {
 
   if (!isEditing) {
     content = (
-      <section>
+      <section className={style.detail}>
         <figure>
           <h2>{haiku.title}</h2>
           <p>By: {haiku.profiles?.username}</p>
@@ -133,6 +134,11 @@ export default function HaikuDetail() {
             required
           />
           <button type="submit">Save</button>
+          {!isOwner && (
+            <button type="button" onClick={() => setIsEditing(false)}>
+              Cancel
+            </button>
+          )}
           {isOwner && (
             <button type="button" onClick={handleDelete}>
               Delete

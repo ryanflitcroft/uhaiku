@@ -84,14 +84,26 @@ form input {
   margin: 0.25em 0;
   width: 200px;
   align-self: center;
+  text-align: center;
 }
 
 button {
+  all: unset;
   width: 100px;
   margin: 1.5em;
   padding: 0.25em;
   align-self: center;
+  color: #3d3d3d;
   cursor: pointer;
+  border: #3d3d3d solid 2px;
+  box-shadow: 1px 1px #5ee7dfaa;
+  transition: transform 200ms, box-shadow 200ms;
+  text-align: center;
+}
+
+button:active {
+  transform: translateX(1px) translateY(1px);
+  box-shadow: #5ee7dfaa 0px 0px 0px;
 }
 
 img {
