@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useHaiku } from '../../hooks/useHaiku';
 import HaikuItem from '../HaikuItem/HaikuItem';
 
@@ -12,9 +11,7 @@ export default function HaikuList() {
       <ul>
         {haikuList.map((haiku, i) => (
           <li key={`${haiku.id} - ${i}`}>
-            <Link to={`/haiku/${haiku.id}`}>
-              <HaikuItem haiku={haiku} />
-            </Link>
+            <HaikuItem haiku={haiku} />
           </li>
         ))}
       </ul>

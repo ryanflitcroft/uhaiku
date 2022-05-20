@@ -1,5 +1,11 @@
 import React from 'react';
 
 export default function Header() {
-  return <header>Header</header>;
+  return (
+    <>
+      <header>
+        <h1>uhaiku</h1>
+      </header>
+    </>
+  );
 }
