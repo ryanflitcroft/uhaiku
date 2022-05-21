@@ -17,7 +17,14 @@ export const server = setupServer(
   ),
   rest.get(
     'https://kyhyvkpvpfgdixqgujqe.supabase.co/rest/v1/haikus',
-    (req, res, ctx) => res(ctx.json(mockHaikuList))
+    (req, res, ctx) => {
+      const query = req.url.searchParams.get('id');
+      console.log(query);
+      if (query === 'eq.1') {
+        return res(ctx.json(mockHaikuItem));
+      }
+      return res(ctx.json(mockHaikuList));
+    }
   ),
   rest.post(
     'https://kyhyvkpvpfgdixqgujqe.supabase.co/storage/v1/object/uhaiku/123456/hello.png',

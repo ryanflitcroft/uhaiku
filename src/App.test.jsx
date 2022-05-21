@@ -98,11 +98,17 @@ describe('renders component App', () => {
     });
 
     userEvent.click(submitButton);
-    await waitForElementToBeRemoved(submitButton);
 
     await waitFor(() => {
-      screen.getByRole('img', {
+      const itemImage = screen.getByRole('img', {
         name: /test description/i,
+      });
+      userEvent.click(itemImage);
+    });
+
+    await waitFor(() => {
+      const editButton = screen.getByRole('button', {
+        name: /edit/i,
       });
     });
 
