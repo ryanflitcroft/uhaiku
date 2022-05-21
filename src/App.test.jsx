@@ -100,6 +100,12 @@ describe('renders component App', () => {
     userEvent.click(submitButton);
     await waitForElementToBeRemoved(submitButton);
 
+    await waitFor(() => {
+      screen.getByRole('img', {
+        name: /test description/i,
+      });
+    });
+
     screen.debug();
   });
 });
