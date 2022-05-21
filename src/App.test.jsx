@@ -167,8 +167,17 @@ describe('renders component App', () => {
       const main = screen.getByRole('main');
       const haikuList = within(main).getByRole('list');
       expect(haikuList.childElementCount).toBe(mockHaikuList.length);
+      const logoutButton = screen.getByRole('button', {
+        name: /logout/i,
+      });
+      userEvent.click(logoutButton);
     });
 
+    await waitFor(() => {
+      screen.getByRole('form', {
+        name: /sign in or sign up to continue/i,
+      });
+    });
     screen.debug();
   });
 });

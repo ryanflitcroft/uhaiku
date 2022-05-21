@@ -54,6 +54,10 @@ export const server = setupServer(
   rest.post(
     'https://kyhyvkpvpfgdixqgujqe.supabase.co/rest/v1/haikus',
     (req, res, ctx) => res(ctx.json(mockHaikuItem))
+  ),
+  rest.post(
+    'https://kyhyvkpvpfgdixqgujqe.supabase.co/auth/v1/logout',
+    (req, res, ctx) => res(ctx.json({}))
   )
 );
 
