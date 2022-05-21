@@ -10,8 +10,11 @@ img {
 
 .item figcaption {
   position: absolute;
-  bottom: 0;
-  background-color: rgba(248, 248, 255, 0.85);
+  bottom: 0.5em;
   padding: 0.25em;
   width: 100%;
+}
+
+figcaption span {
+  padding: 0.05em 0;
 }

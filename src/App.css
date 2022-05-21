@@ -12,30 +12,37 @@ body,
   font-family: 'sunflower', sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: #3d3d3d;
   background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
-    font-size: 19px;
+  font-size: 19px;
   letter-spacing: 1px;
-  word-spacing: 5px;
+  word-spacing: 3px;
 }
 
 header {
+  width: 100%;
   position: sticky;
   top: 0;
   justify-content: center;
   align-items: center;
   background: whitesmoke;
-  color: #3d3d3d;
+  text-shadow: 1px 1px 1px #1a95c5;
   padding: 1em;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 0.15fr;
+  grid-template-columns: 1fr 1fr;
   text-align: center;
   margin: 0 0 1em;
+  padding: 0.5em 1em;
   z-index: 1;
 }
 
-header p span {
-  display: block;
-  font-weight: bold;
+h1 {
+  margin: 0;
+}
+
+header p {
+  margin: 0;
 }
 
 header button {
@@ -43,9 +50,22 @@ header button {
   cursor: pointer;
 }
 
+nav {
+  grid-row: 1 / span 2;
+  grid-column: 2 / span 1;
+  text-shadow: 1px 1px 1px #3d3d3d;
+} 
+
 a {
   text-decoration: none;
-  color: #1a95c5;
+  color: #3d3d3d;
+  text-shadow: 1px 1px 1px #1a95c5;
+}
+
+a:hover,
+button:hover {
+  transition: color 500ms;
+  color: #005171;
 }
 
 main { 
@@ -122,6 +142,17 @@ button:active {
   box-shadow: #094c66aa 0px 0px 0px;
 }
 
+section button {
+  margin: 0.85em 1.5em;
+}
+
+img {
+  background: ghostwhite;
+  padding: 0.5em 0.5em 2em;
+  border: #3d3d3d solid 2px;
+  box-shadow: 2px 2px 1px #094c66aa;
+}
+
 ul {
   padding: 0;
 }
@@ -131,5 +162,10 @@ li {
 }
 
 li button {
-    color: #1a95c5;
+  color: #3d3d3d;
+  text-shadow: 1px 1px 1px #1a95c5;
+}
+
+footer {
+  height: 1.5em;
 }

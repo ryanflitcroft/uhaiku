@@ -5,12 +5,12 @@ import styles from './HaikuItem.css';
 export default function HaikuItem({ haiku }) {
   return (
     <>
-      <figure className={styles.item}>
-        <Link to={`/haiku/${haiku.id}`}>
+      <Link to={`/haiku/${haiku.id}`}>
+        <figure className={styles.item}>
           <img src={`${haiku.image}`} alt={`${haiku.alt}`} />
-        </Link>
-        <figcaption>{haiku.title}</figcaption>
-      </figure>
+          <figcaption>{haiku.title}</figcaption>
+        </figure>
+      </Link>
     </>
   );
 }
