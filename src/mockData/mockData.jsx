@@ -75,3 +75,23 @@ export const mockHaikuList = [
     },
   },
 ];
+
+export const mockHaikuItem = {
+  id: 1,
+  created_at: '2022-05-20T00:46:04.595199+00:00',
+  title: 'test title',
+  line_one: 'test line one',
+  image:
+    'https://kyhyvkpvpfgdixqgujqe.supabase.co/storage/v1/object/public/uhaiku/a813b59f-9369-44a2-bd22-09c3135dac33/hello.png',
+  alt: 'test description',
+  line_two: 'test line two',
+  line_three: 'test line three',
+  user_id: '123456',
+  profiles: {
+    username: 'Ryan',
+  },
+};
+
+export const mockHaikuImage = {
+  Key: 'uhaiku/123456/hello.png',
+};

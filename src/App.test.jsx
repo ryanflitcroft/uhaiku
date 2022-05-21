@@ -16,6 +16,7 @@ import { mockProfile, mockHaikuList } from './mockData/mockData';
 
 describe('renders component App', () => {
   it('should sign a user in', async () => {
+    const file = new File(['hello'], 'hello.png', { type: 'image/png' });
     // stuff
     render(
       <MemoryRouter>
@@ -69,6 +70,35 @@ describe('renders component App', () => {
         name: /home/i,
       });
     });
+
+    await waitFor(() => {
+      const createForm = screen.getByRole('form', {
+        name: /input and data to create your haiku/i,
+      });
+    });
+
+    const titleInput = screen.getByPlaceholderText(/space needle/i);
+    const lineOneInput = screen.getByPlaceholderText(/wheedle the needle/i);
+    const lineTwoInput = screen.getByPlaceholderText(/a red light flashing/i);
+    const lineThreeInput = screen.getByPlaceholderText(/through morning rain/i);
+    const imageInput = screen.getByLabelText(/upload image/i);
+    const descriptionInput = screen.getByPlaceholderText(
+      /view of the puget sound/i
+    );
+
+    userEvent.type(titleInput, 'test title');
+    userEvent.type(lineOneInput, 'test line one');
+    userEvent.type(lineTwoInput, 'test line two');
+    userEvent.type(lineThreeInput, 'test line three');
+    userEvent.upload(imageInput, file);
+    userEvent.type(descriptionInput, 'test description');
+
+    const submitButton = screen.getByRole('button', {
+      name: /submit/i,
+    });
+
+    userEvent.click(submitButton);
+    await waitForElementToBeRemoved(submitButton);
 
     screen.debug();
   });
