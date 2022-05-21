@@ -35,7 +35,7 @@ export default function CreateHaiku() {
   return (
     <>
       <form
-        aria-label="input and data to create your haiku"
+        aria-label="input and submit data to create your haiku"
         onSubmit={handleSubmit}
       >
         <label htmlFor="title">Give your Haiku a title:</label>

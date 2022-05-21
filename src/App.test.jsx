@@ -64,7 +64,6 @@ describe('renders component App', () => {
       expect(haikuList.childElementCount).toBe(mockHaikuList.length);
 
       userEvent.click(createLink);
-      waitForElementToBeRemoved(createLink);
 
       const homeButton = screen.getByRole('link', {
         name: /home/i,
@@ -73,7 +72,7 @@ describe('renders component App', () => {
 
     await waitFor(() => {
       const createForm = screen.getByRole('form', {
-        name: /input and data to create your haiku/i,
+        name: /input and submit data to create your haiku/i,
       });
     });
 
@@ -100,6 +99,9 @@ describe('renders component App', () => {
     userEvent.click(submitButton);
 
     await waitFor(() => {
+      const main = screen.getByRole('main');
+      const haikuList = within(main).getByRole('list');
+      expect(haikuList.childElementCount).toBe(mockHaikuList.length + 1);
       const itemImage = screen.getByRole('img', {
         name: /test description/i,
       });
@@ -107,9 +109,64 @@ describe('renders component App', () => {
     });
 
     await waitFor(() => {
+      const title = screen.getByRole('heading', {
+        name: /test title/i,
+      });
+      const username = screen.getByText(/by ryan/i);
+      const image = screen.getByRole('img', {
+        name: /test description/i,
+      });
+      const lineOne = screen.getByText(/test line one/i);
+      const lineTwo = screen.getByText(/test line two/i);
+      const lineThree = screen.getByText(/test line three/i);
       const editButton = screen.getByRole('button', {
         name: /edit/i,
       });
+
+      userEvent.click(editButton);
+    });
+
+    await waitFor(() => {
+      const editForm = screen.getByRole('form', {
+        name: /input and submit data to update your haiku/i,
+      });
+    });
+
+    const titleInputUpdate = screen.getByPlaceholderText(/test title/i);
+    const lineOneInputUpdate = screen.getByPlaceholderText(/test line one/i);
+    const lineTwoInputUpdate = screen.getByPlaceholderText(/test line two/i);
+    const lineThreeInputUpdate =
+      screen.getByPlaceholderText(/test line three/i);
+
+    userEvent.type(titleInputUpdate, 'title update');
+    userEvent.type(lineOneInputUpdate, 'line one update');
+    userEvent.type(lineTwoInputUpdate, 'line two update');
+    userEvent.type(lineThreeInputUpdate, 'line three update');
+
+    const saveButton = screen.getByRole('button', {
+      name: /save/i,
+    });
+
+    userEvent.click(saveButton);
+
+    await waitFor(() => {
+      const editForm = screen.getByRole('form', {
+        name: /input and submit data to update your haiku/i,
+      });
+      userEvent.click(editForm);
+    });
+
+    await waitFor(() => {
+      const deleteButton = screen.getByRole('button', {
+        name: /delete/i,
+      });
+      userEvent.click(deleteButton);
+    });
+
+    await waitFor(() => {
+      const main = screen.getByRole('main');
+      const haikuList = within(main).getByRole('list');
+      expect(haikuList.childElementCount).toBe(mockHaikuList.length);
     });
 
     screen.debug();
