@@ -17,8 +17,8 @@ export default function Header() {
         <h1>uhaiku</h1>
         {pathname !== '/auth' && (
           <>
-            <p>{profile}</p>
             <Navigation />
+            <p>{profile}</p>
           </>
         )}
       </header>
