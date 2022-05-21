@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'sunflower', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-image: repeating-linear-gradient(white 0px, white 24px, teal 25px);
+    font-size: 19px;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  background: whitesmoke;
+  color: #3d3d3d;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  margin: 0 0 1em;
+  z-index: 1;
+}
+
+header p span {
+  display: block;
+  font-weight: bold;
+}
+
+header button {
+  all: unset;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #1a95c5;
+}
+
+main { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background: ghostwhite;
+  border: #3d3d3d solid 2px;
+  box-shadow: 2px 2px 1px #094c66aa;
+  margin: 3em 0;
+}
+
+form div {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin: 0 0 0.5em;
+}
+
+form div span {
+  width: 100%;
+  padding: 0.5em;
+  cursor: initial;
+  background: ghostwhite;
+  color: #d3d3d3;
+}
+
+form div span.clickable {
+  color: #3d3d3d;
+  background: rgb(231, 231, 231);
+  cursor: pointer;
+}
+
+form label {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+  align-self: center;
+}
+
+form input {
+  margin: 0.25em 0;
+  width: 200px;
+  align-self: center;
+  text-align: center;
+  font-family: 'sunflower', sans-serif;
+}
+
+button {
+  all: unset;
+  width: 100px;
+  padding: 0.25em;
+  align-self: center;
+  color: #3d3d3d;
+  cursor: pointer;
+  border: #3d3d3d solid 2px;
+  background: #239ac9;
+  box-shadow: 2px 2px 1px #094c66aa;
+  transition: transform 200ms, box-shadow 200ms;
+  text-align: center;
+  margin: 1em 0;
+}
+
+button:active {
+  transform: translateX(2px) translateY(2px);
+  box-shadow: #094c66aa 0px 0px 0px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+li button {
+    color: #1a95c5;
+}
