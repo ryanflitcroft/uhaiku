@@ -17,7 +17,7 @@ import { mockProfile, mockHaikuList } from './mockData/mockData';
 describe('renders component App', () => {
   it('should sign a user in', async () => {
     const file = new File(['hello'], 'hello.png', { type: 'image/png' });
-    // stuff
+
     render(
       <MemoryRouter>
         <AuthProvider>
@@ -178,6 +178,5 @@ describe('renders component App', () => {
         name: /sign in or sign up to continue/i,
       });
     });
-    screen.debug();
   });
 });
