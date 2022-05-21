@@ -20,7 +20,6 @@ export const server = setupServer(
     'https://kyhyvkpvpfgdixqgujqe.supabase.co/rest/v1/haikus',
     (req, res, ctx) => {
       const query = req.url.searchParams.get('id');
-      console.log(query);
       if (query === 'eq.1') {
         return res(ctx.json(mockHaikuItem));
       }
@@ -31,7 +30,6 @@ export const server = setupServer(
     'https://kyhyvkpvpfgdixqgujqe.supabase.co/rest/v1/haikus',
     (req, res, ctx) => {
       const query = req.url.searchParams.get('id');
-      console.log(query);
       if (query === 'eq.1') {
         return res(ctx.json(mockHaikuItemUpdate));
       }
@@ -41,7 +39,6 @@ export const server = setupServer(
     'https://kyhyvkpvpfgdixqgujqe.supabase.co/rest/v1/haikus',
     (req, res, ctx) => {
       const query = req.url.searchParams.get('id');
-      console.log(query);
       if (query === 'eq.1') {
         return res(ctx.json(mockHaikuItemUpdate));
       }

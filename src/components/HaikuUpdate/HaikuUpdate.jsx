@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useHaiku } from '../../hooks/useHaiku';
 import { getHaikuById } from '../../services/fetch-utils';
+import styles from './HaikuUpdate.css';
 
 export default function HaikuUpdate({
   haiku,
@@ -60,8 +61,11 @@ export default function HaikuUpdate({
   }
   return (
     <>
-      <section>
-        <form aria-label='input and submit data to update your haiku' onSubmit={handleUpdate}>
+      <section className={styles.update}>
+        <form
+          aria-label="input and submit data to update your haiku"
+          onSubmit={handleUpdate}
+        >
           <label htmlFor="title">Give your Haiku a title:</label>
           <input
             type="text"
